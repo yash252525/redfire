@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+
+{% block title %} {% endblock %}
+
+
+
+{% block body %}
+
+    {% if name == "yash" %}
+        <h1>Hello {{ name }}</h1>
+    {% else %}
+        <h2> Hello other user</h2>
+    {% endif %}
+
+
+{% endblock %}

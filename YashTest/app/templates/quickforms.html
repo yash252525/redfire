@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% import "bootstrap_wtf.html" as wtf %}
+
+
+{% block title %} Quick Forms Bootstrap {% endblock %}
+
+
+
+{% block body %}
+    <div class="container m-5">
+        {{ wtf.quick_form(form, action="", method="post", novalidate=True , autofocus=False) }}
+    </div>
+
+{% endblock %}
