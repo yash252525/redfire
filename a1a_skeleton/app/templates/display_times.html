@@ -1,0 +1,25 @@
+{% extends "base.html "%}
+{% import "bootstrap_wtf.html" as wtf %}
+
+
+{% block content %}
+
+<form method="post" action="{{ url_for('display_times') }}">
+    {{ form.csrf_token() }}
+        <div >
+            {{ form.base.label(class="form-label") }}
+                {{ form.base(class="form-control") }}
+        </div>
+    <div >
+        {{ form.multiplicand.label(class="form-label") }}
+            {{ form.multiplicand(class="form-control") }}
+    </div>
+    <br>
+        <div >
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+</form>
+
+{% endblock content %}
+
+

@@ -1,0 +1,29 @@
+{% extends "base.html "%}
+
+{% block content %}
+
+
+    <h1>Multiplication Table</h1>
+    <table class="table mt-3">
+        <thead>
+            <tr>
+                <th>Base</th>
+                <th>Multiplicand</th>
+                <th>Product</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in range(12) %}
+            <tr>
+                <td>{{ table['Base'] }}</td>
+                <td>{{ table['Multiplicand'][i] }}</td>
+                <td>{{ table['Product'][i] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock content %}
+
+

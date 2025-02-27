@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Contents</h1>
+<ul>
+    {% for number in numbers %}
+    <li>{{ number }}</li>
+    {% endfor %}
+</ul>
+<form method="post">
+    <button type="submit" name="display" class="btn btn-primary">Display Table</button>
+    <button type="submit" name="download" class="btn btn-secondary">Download CSV</button>
+</form>
+{% endblock %}
