@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>My List</h1>
+<table>
+    {% for item in lst %}
+    <tr>
+        <!-- Apply bg-primary if chosen, bg-secondary if chosen2 -->
+        <td {% if chosen|int == loop.index0 %} class="bg-primary" {% elif chosen2|int == loop.index0 %} class="bg-secondary" {% endif %}>
+            {{ item }}
+        </td>
+
+        <td>
+            <!-- Form for Primary Selection -->
+            <form action="{{ url_for('choose') }}" method="post" style="display: inline;">
+                {{ form.csrf_token() }}
+                {{ form.choice(value=loop.index0) }}
+                {{ form.choice2(value=chosen2) }} <!-- Pass the current secondary choice -->
+                <button class="btn" type="submit" name="action" value="primary">
+                    <i class="bi bi-0-square"></i> Primary
+                </button>
+            </form>
+
+            <!-- Form for Secondary Selection -->
+            <form action="{{ url_for('choose') }}" method="post" style="display: inline;">
+                {{ form.csrf_token() }}
+                {{ form.choice(value=chosen) }} <!-- Pass the current primary choice -->
+                {{ form.choice2(value=loop.index0) }}
+                <button class="btn" type="submit" name="action" value="secondary">
+                    <i class="bi bi-1-square"></i> Secondary
+                </button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<!-- Form for Resetting Selections -->
+<form action="{{ url_for('choose') }}" method="post">
+    {{ form.csrf_token() }}
+    {{ form.choice(value=-1) }}
+    {{ form.choice2(value=-1) }}
+    <button class="btn" type="submit">
+        <i class="bi-x-circle"></i> Reset
+    </button>
+</form>
+{% endblock %}

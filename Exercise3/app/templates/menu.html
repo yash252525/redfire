@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% import "bootstrap_wtf.html" as wtf %}
+
+{% block content %}
+  <form action="{{ url_for('display_menu') }}" method="POST">
+    <div>
+      <h1>Starters</h1>
+      {% for item in starters %}
+        <input type="radio" name="starter" value="{{ item['Dish'] }}">{{ item['Dish'] }} - £{{ item['Price'] }}<br>
+      {% endfor %}
+      <input type="radio" name="starter" value="None">None<br>
+    </div>
+
+    <div>
+      <h1>Mains</h1>
+      {% for item in mains %}
+        <input type="radio" name="main" value="{{ item['Dish'] }}">{{ item['Dish'] }} - £{{ item['Price'] }}<br>
+      {% endfor %}
+      <input type="radio" name="main" value="None">None<br>  <!-- Fixed: Changed 'starter' to 'main' -->
+    </div>
+
+    <div>
+      <h1>Desserts</h1>
+      {% for item in desserts %}
+        <input type="radio" name="dessert" value="{{ item['Dish'] }}">{{ item['Dish'] }} - £{{ item['Price'] }}<br>
+      {% endfor %}
+      <input type="radio" name="dessert" value="None">None<br>  <!-- Fixed: Changed 'starter' to 'dessert' -->
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+{% endblock %}

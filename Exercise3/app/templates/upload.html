@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% import "bootstrap_wtf.html" as wtf %}
+
+{% block content %}
+<div>
+    <h1>Upload CSV</h1>
+     <form method="POST" action="" novalidate enctype="multipart/form-data">
+        {{ form.csrf_token() }}
+        {{ wtf.form_field(form.file, False) }}
+        {{ wtf.form_field(form.submit, False) }}
+    </form>
+
+</div>
+{% endblock %}

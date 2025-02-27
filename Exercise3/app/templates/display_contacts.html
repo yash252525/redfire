@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% import "bootstrap_wtf.html" as wtf %}
+
+{% block content %}
+    <h1>Contacts</h1>
+    <table class="table">
+        {% for row in contacts %}
+            {% if loop.index0 == 0 %}
+                <thead>
+                    <tr>
+                        {% for item in row %}
+                        <th>{{ item }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+            {% else %}
+            <tr>
+                {% for item in row %}
+                <td>{{ item|e }}</td>
+                {% endfor %}
+            </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+
+   <div class="container">
+    <a href="{{ url_for('download_csv', contacts=contacts) }}" class="btn btn-primary">
+    <i class="bi bi-download"></i>    Download CSV
+    </a>
+
+</div>
+{% endblock %}
